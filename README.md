@@ -7,4 +7,5 @@ https://ithelp.ithome.com.tw/users/20124323/ironman/5634
 https://ithelp.ithome.com.tw/users/20119925/ironman/2276
 https://mis2000lab.pixnet.net/blog/post/35172535
 
-預計開發: 留言板、採購網、自我介紹
+一個診所網站建置
+預計開發: 診所介紹、醫師介紹、 專業服務、醫療文章(連結FB or YT)、回饋文章、線上預約、切換英文版本
