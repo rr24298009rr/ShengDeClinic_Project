@@ -3,6 +3,7 @@ on:
   pull_request:
     branches:
     - master
+    types: [closed] # Only trigger when a pull request is closed (merged or declined)
 env:
   AZURE_WEBAPP_NAME: ShengDeClinic
   AZURE_WEBAPP_PACKAGE_PATH: MVC_Project\published
