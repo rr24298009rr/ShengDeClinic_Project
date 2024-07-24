@@ -1,6 +1,6 @@
 name: 建置 .NET Core 應用程式並部署到 Web 應用程式 ShengDeClinic
 on:
-  push:
+  pull_request:
     branches:
     - master
 env:
