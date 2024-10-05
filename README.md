@@ -1,5 +1,5 @@
-# MVC_Project
-一個診所網站建置
+# ShengDeClinic_Project
+聖德診所網站建置
 
 網站連結:
 https://shengdeclinic.azurewebsites.net/
@@ -8,7 +8,7 @@ https://shengdeclinic.azurewebsites.net/
 診所介紹、醫師介紹、 專業服務、醫療文章(連結FB or YT)、回饋文章、線上預約、會員登入系統(領取QR code到場掃描有優惠)、切換英文版本
 
 部屬:
-經過git push觸發GitHub Action的CI/CD 目標為Azure
+經過merge request觸發GitHub Action的CI/CD 目標為Azure
 
 
 我的第一支MVC架構練習，參考以下資源:
