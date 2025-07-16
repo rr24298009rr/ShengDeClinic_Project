@@ -1,0 +1,71 @@
+<div class="dashboard fade-in">
+  <h1>儀表板</h1>
+  
+  <div class="stats-grid">
+    <div class="stat-card slide-up">
+      <div class="stat-icon">📅</div>
+      <div class="stat-info">
+        <h3>今日預約</h3>
+        <p class="stat-number">{{ stats.todayAppointments }}</p>
+      </div>
+    </div>
+    
+    <div class="stat-card slide-up">
+      <div class="stat-icon">👥</div>
+      <div class="stat-info">
+        <h3>總病患數</h3>
+        <p class="stat-number">{{ stats.totalPatients }}</p>
+      </div>
+    </div>
+    
+    <div class="stat-card slide-up">
+      <div class="stat-icon">⏰</div>
+      <div class="stat-info">
+        <h3>待處理事項</h3>
+        <p class="stat-number">{{ stats.pendingTasks }}</p>
+      </div>
+    </div>
+    
+    <div class="stat-card slide-up">
+      <div class="stat-icon">💰</div>
+      <div class="stat-info">
+        <h3>本月營收</h3>
+        <p class="stat-number">NT$ {{ stats.revenue | number }}</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="dashboard-sections">
+    <div class="section">
+      <div class="card">
+        <h2>最近活動</h2>
+        <div class="activity-list">
+          <div class="activity-item">
+            <span class="activity-time">10:30</span>
+            <span class="activity-desc">王小明 - 定期檢查</span>
+          </div>
+          <div class="activity-item">
+            <span class="activity-time">11:00</span>
+            <span class="activity-desc">李美華 - 感冒診療</span>
+          </div>
+          <div class="activity-item">
+            <span class="activity-time">11:30</span>
+            <span class="activity-desc">張大同 - 複診</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <div class="card">
+        <h2>快速功能</h2>
+        <div class="quick-actions">
+          <button class="btn btn-primary">新增病患</button>
+          <button class="btn btn-secondary">預約掛號</button>
+          <button class="btn btn-secondary">查看報表</button>
+          <button class="btn btn-secondary">系統設定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

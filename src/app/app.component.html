@@ -1,0 +1,55 @@
+<header class="header">
+  <div class="container">
+    <h1>{{ title }}</h1>
+    <nav class="nav">
+      <ul>
+        <li><a href="#" class="nav-link">首頁</a></li>
+        <li><a href="#" class="nav-link">病患管理</a></li>
+        <li><a href="#" class="nav-link">預約管理</a></li>
+        <li><a href="#" class="nav-link">報表</a></li>
+        <li><a href="#" class="nav-link">設定</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="main-content">
+  <div class="container">
+    <div class="welcome-section">
+      <div class="card">
+        <h2>歡迎使用基隆聖德診所管理系統</h2>
+        <p>這是一個現代化的診所管理系統，提供完整的病患管理、預約排程和醫療記錄功能。</p>
+        
+        <div class="features-grid">
+          <div class="feature-card">
+            <h3>病患管理</h3>
+            <p>完整的病患資料管理，包含基本資料、病歷記錄和診療歷史。</p>
+          </div>
+          
+          <div class="feature-card">
+            <h3>預約系統</h3>
+            <p>智能預約排程系統，支援線上預約和時間管理。</p>
+          </div>
+          
+          <div class="feature-card">
+            <h3>醫療記錄</h3>
+            <p>數位化醫療記錄管理，安全可靠的資料儲存。</p>
+          </div>
+          
+          <div class="feature-card">
+            <h3>報表分析</h3>
+            <p>詳細的營運報表和數據分析，助您做出更好的經營決策。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <router-outlet></router-outlet>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; {{ currentYear }} 基隆聖德診所管理系統. 版權所有.</p>
+  </div>
+</footer>

@@ -1,0 +1,201 @@
+.dashboard {
+  h1 {
+    color: var(--primary-dark);
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: var(--bg-primary);
+  padding: 1.75rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(47, 172, 165, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  transition: all 0.3s ease;
+  border: 1px solid var(--neutral-200);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--primary), var(--primary-light));
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(47, 172, 165, 0.15);
+
+    &::before {
+      transform: scaleY(1);
+    }
+
+    .stat-icon {
+      background: var(--primary);
+      color: var(--text-on-primary);
+      transform: scale(1.05);
+    }
+  }
+
+  .stat-icon {
+    font-size: 2.5rem;
+    background: var(--neutral-100);
+    color: var(--primary);
+    padding: 1rem;
+    border-radius: 12px;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(47, 172, 165, 0.1);
+  }
+
+  .stat-info {
+    flex: 1;
+
+    h3 {
+      margin: 0 0 0.75rem 0;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .stat-number {
+      margin: 0;
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+}
+
+.dashboard-sections {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+
+  .section {
+    .card {
+      h2 {
+        color: var(--primary-dark);
+        margin-bottom: 1.25rem;
+        font-size: 1.4rem;
+        font-weight: 600;
+        position: relative;
+        padding-bottom: 0.75rem;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 60px;
+          height: 3px;
+          background: linear-gradient(90deg, var(--primary), var(--secondary));
+          border-radius: 2px;
+        }
+      }
+    }
+  }
+}
+
+.activity-list {
+  .activity-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--neutral-300);
+    transition: all 0.3s ease;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background-color: var(--neutral-100);
+      margin: 0 -1rem;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    .activity-time {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: var(--text-on-primary);
+      padding: 0.4rem 0.75rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      min-width: 60px;
+      text-align: center;
+      margin-right: 1.25rem;
+      box-shadow: 0 2px 6px rgba(47, 172, 165, 0.2);
+    }
+
+    .activity-desc {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+  }
+}
+
+.quick-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+
+  .btn {
+    padding: 1.25rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-sections {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-actions {
+    grid-template-columns: 1fr;
+  }
+}
