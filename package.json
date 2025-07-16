@@ -1,7 +1,7 @@
 {
   "name": "keelung-shengde-clinic",
   "version": "1.0.0",
-  "description": "Keelung ShengDe Clinic Management System",
+  "description": "Keelung ShengDe Clinic Official Website",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

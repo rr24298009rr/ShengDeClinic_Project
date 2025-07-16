@@ -3,31 +3,43 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: '/dashboard',
+    redirectTo: '/home',
     pathMatch: 'full'
   },
   {
-    path: 'dashboard',
+    path: 'home',
     loadComponent: () => import('./pages/dashboard/dashboard.component').then(m => m.DashboardComponent)
   },
   {
-    path: 'patients',
-    loadComponent: () => import('./pages/patients/patients.component').then(m => m.PatientsComponent)
-  },
-  {
-    path: 'appointments',
+    path: 'clinic-hours',
     loadComponent: () => import('./pages/appointments/appointments.component').then(m => m.AppointmentsComponent)
   },
   {
-    path: 'reports',
+    path: 'about',
+    loadComponent: () => import('./pages/patients/patients.component').then(m => m.PatientsComponent)
+  },
+  {
+    path: 'family-medicine',
     loadComponent: () => import('./pages/reports/reports.component').then(m => m.ReportsComponent)
   },
   {
-    path: 'settings',
+    path: 'self-pay-services',
+    loadComponent: () => import('./pages/settings/settings.component').then(m => m.SettingsComponent)
+  },
+  {
+    path: 'health-checkup',
+    loadComponent: () => import('./pages/settings/settings.component').then(m => m.SettingsComponent)
+  },
+  {
+    path: 'health-articles',
+    loadComponent: () => import('./pages/settings/settings.component').then(m => m.SettingsComponent)
+  },
+  {
+    path: 'contact',
     loadComponent: () => import('./pages/settings/settings.component').then(m => m.SettingsComponent)
   },
   {
     path: '**',
-    redirectTo: '/dashboard'
+    redirectTo: '/home'
   }
 ];
