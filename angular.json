@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/sheng-de-clinic",
+            "outputPath": "dist/keelung-shengde-clinic",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "sheng-de-clinic:build:production"
+              "buildTarget": "keelung-shengde-clinic:build:production"
             },
             "development": {
-              "buildTarget": "sheng-de-clinic:build:development"
+              "buildTarget": "keelung-shengde-clinic:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "sheng-de-clinic:build"
+            "buildTarget": "keelung-shengde-clinic:build"
           }
         },
         "test": {
