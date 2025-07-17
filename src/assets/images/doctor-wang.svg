@@ -1,0 +1,7 @@
+<!-- 這是醫師照片的佔位符，請替換為實際的王公作醫師照片 -->
+<svg width="150" height="150" xmlns="http://www.w3.org/2000/svg">
+  <rect width="150" height="150" fill="#e0e0e0"/>
+  <text x="50%" y="50%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="14" fill="#666">
+    王公作醫師
+  </text>
+</svg>

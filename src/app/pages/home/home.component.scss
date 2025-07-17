@@ -1,0 +1,899 @@
+// 全域樣式設定
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// 變數定義
+:root {
+  --primary-color: #2c5aa0;
+  --secondary-color: #4a90a4;
+  --accent-color: #7db46c;
+  --text-dark: #333333;
+  --text-light: #666666;
+  --background-light: #f8f9fa;
+  --white: #ffffff;
+  --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.15);
+  --border-radius: 8px;
+  --transition: all 0.3s ease;
+}
+
+// Hero Section
+.hero-section {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: var(--white);
+  padding: 80px 0;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+
+  // 流動的背景特效
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    background: linear-gradient(45deg, 
+      rgba(255,255,255,0.03) 25%, 
+      transparent 25%, 
+      transparent 75%, 
+      rgba(255,255,255,0.03) 75%),
+    linear-gradient(45deg, 
+      rgba(255,255,255,0.03) 25%, 
+      transparent 25%, 
+      transparent 75%, 
+      rgba(255,255,255,0.03) 75%);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+    animation: floatingPattern 20s linear infinite;
+    z-index: 0;
+  }
+
+  // 額外的流動粒子效果
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(125, 180, 108, 0.2) 2px, transparent 2px),
+      radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+      radial-gradient(circle at 40% 80%, rgba(74, 144, 164, 0.15) 1.5px, transparent 1.5px);
+    background-size: 100px 100px, 150px 150px, 120px 120px;
+    animation: floatingParticles 15s ease-in-out infinite;
+    z-index: 0;
+  }
+
+  .hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  .clinic-intro {
+    margin-bottom: 40px;
+
+    .doctor-intro {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 50px;
+      margin-bottom: 30px;
+
+      .doctor-info {
+        text-align: left;
+
+        .doctor-name {
+          font-size: 2.5rem;
+          font-weight: 600;
+          margin-bottom: 10px;
+          color: var(--accent-color);
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .doctor-title {
+          font-size: 1.4rem;
+          margin-bottom: 8px;
+          opacity: 0.9;
+        }
+
+        .doctor-experience {
+          font-size: 1.2rem;
+          opacity: 0.8;
+        }
+      }
+
+      .doctor-photo {
+        .doctor-image {
+          width: 220px; // 從150px增加到220px
+          height: 220px; // 從150px增加到220px
+          border-radius: 50%;
+          border: 5px solid var(--accent-color);
+          box-shadow: 
+            0 0 30px rgba(125, 180, 108, 0.4),
+            0 8px 32px rgba(0, 0, 0, 0.3);
+          object-fit: cover;
+          transition: all 0.3s ease;
+          
+          &:hover {
+            transform: scale(1.05);
+            box-shadow: 
+              0 0 40px rgba(125, 180, 108, 0.6),
+              0 12px 40px rgba(0, 0, 0, 0.4);
+          }
+        }
+      }
+    }
+
+    .clinic-slogan {
+      font-size: 1.4rem;
+      opacity: 0.9;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  .quick-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+
+    .action-btn {
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .btn-icon {
+        font-size: 1.3rem;
+      }
+
+      &.primary {
+        background: var(--accent-color);
+        color: var(--white);
+
+        &:hover {
+          background: #6ba85a; // 手動設定較深的綠色
+          transform: translateY(-2px);
+          box-shadow: var(--shadow-hover);
+        }
+      }
+
+      &.secondary {
+        background: transparent;
+        color: var(--white);
+        border: 2px solid var(--white);
+
+        &:hover {
+          background: var(--white);
+          color: var(--primary-color);
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+}
+
+// 通用區塊樣式
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 50px;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: 2px;
+  }
+}
+
+// 專業認證區塊
+.credentials-section {
+  padding: 80px 0;
+  background: var(--background-light);
+
+  .credentials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+
+    .credential-card {
+      background: var(--white);
+      padding: 40px 30px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: var(--transition);
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .credential-icon {
+        font-size: 3rem;
+        margin-bottom: 20px;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+      }
+
+      ul {
+        list-style: none;
+        text-align: left;
+
+        li {
+          padding: 8px 0;
+          border-bottom: 1px solid #eee;
+          color: var(--text-light);
+
+          &:before {
+            content: '✓';
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-right: 10px;
+          }
+
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 服務項目區塊
+.services-section {
+  padding: 80px 0;
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+
+    .service-card {
+      background: var(--white);
+      padding: 40px 30px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: var(--transition);
+      border-top: 4px solid var(--primary-color);
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+        border-top-color: var(--accent-color);
+      }
+
+      .service-icon {
+        font-size: 3rem;
+        margin-bottom: 20px;
+      }
+
+      .service-title {
+        font-size: 1.4rem;
+        color: var(--primary-color);
+        margin-bottom: 15px;
+      }
+
+      .service-description {
+        color: var(--text-light);
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+
+      .service-features {
+        list-style: none;
+        text-align: left;
+
+        li {
+          padding: 5px 0;
+          color: var(--text-light);
+          position: relative;
+          padding-left: 20px;
+
+          &:before {
+            content: '•';
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 門診時間區塊
+.schedule-section {
+  padding: 80px 0;
+  background: var(--background-light);
+
+  .clinic-hours {
+    margin-top: 1rem;
+
+    .hours-table-container {
+      margin-top: 1rem;
+      overflow-x: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(47, 172, 165, 0.1);
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      font-size: 0.95rem;
+      border: 1px solid var(--primary-color);
+
+      thead {
+        th {
+          background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+          color: var(--white);
+          padding: 1rem 0.8rem;
+          text-align: center;
+          font-weight: 600;
+          font-size: 1rem;
+          letter-spacing: 0.5px;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+          line-height: 1.4;
+
+          &:first-child {
+            width: 20%;
+          }
+
+          &:not(:first-child) {
+            width: 11.43%; // 7 columns for days of week
+          }
+        }
+      }
+
+      tbody {
+        tr {
+          transition: all 0.3s ease;
+
+          &:nth-child(even) {
+            background: var(--background-light);
+          }
+
+          &:hover {
+            background: rgba(47, 172, 165, 0.08);
+            box-shadow: inset 0 0 0 1px var(--primary-color);
+          }
+        }
+
+        td {
+          padding: 1rem 0.8rem;
+          text-align: center;
+          border-bottom: 1px solid #ddd;
+          transition: all 0.3s ease;
+
+          &.time-label {
+            background: linear-gradient(135deg, #f0f0f0, #e8e8e8);
+            font-weight: 600;
+            color: var(--primary-color);
+            text-align: center;
+            border-right: 2px solid var(--primary-color);
+            position: relative;
+            line-height: 1.4;
+
+            &::after {
+              content: '';
+              position: absolute;
+              right: 0;
+              top: 0;
+              bottom: 0;
+              width: 2px;
+              background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+            }
+
+            .time-range {
+              font-size: 0.75rem;
+              font-weight: 400;
+              opacity: 0.8;
+              font-family: 'Courier New', monospace;
+              margin-top: 0.3rem;
+              display: block;
+            }
+          }
+
+          &.time-slot {
+            font-size: 1.2rem;
+            padding: 1.2rem 0.8rem;
+            position: relative;
+
+            &.available {
+              color: #27ae60;
+              background: linear-gradient(135deg, rgba(39, 174, 96, 0.12), rgba(39, 174, 96, 0.06));
+              border: 1px solid rgba(39, 174, 96, 0.2);
+              
+              &:hover {
+                background: linear-gradient(135deg, rgba(39, 174, 96, 0.2), rgba(39, 174, 96, 0.1));
+                transform: scale(1.05);
+                box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+              }
+            }
+
+            &.unavailable {
+              color: #e74c3c;
+              background: linear-gradient(135deg, rgba(231, 76, 60, 0.12), rgba(231, 76, 60, 0.06));
+              border: 1px solid rgba(231, 76, 60, 0.2);
+              font-size: 0.9rem;
+              font-weight: 500;
+
+              &:hover {
+                background: linear-gradient(135deg, rgba(231, 76, 60, 0.15), rgba(231, 76, 60, 0.08));
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .schedule-note {
+    text-align: center;
+    color: var(--text-light);
+    margin-top: 30px;
+
+    p {
+      margin: 5px 0;
+    }
+  }
+}
+
+// 病患見證區塊
+.testimonials-section {
+  padding: 80px 0;
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+
+    .testimonial-card {
+      background: var(--white);
+      padding: 30px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      position: relative;
+      transition: var(--transition);
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      &:before {
+        content: '"';
+        position: absolute;
+        top: -10px;
+        left: 20px;
+        font-size: 4rem;
+        color: var(--accent-color);
+        line-height: 1;
+      }
+
+      .testimonial-content {
+        margin-bottom: 20px;
+        font-style: italic;
+        color: var(--text-light);
+        line-height: 1.6;
+      }
+
+      .testimonial-author {
+        text-align: right;
+
+        .author-name {
+          font-weight: 600;
+          color: var(--primary-color);
+        }
+
+        .author-condition {
+          color: var(--text-light);
+          font-size: 0.9rem;
+          display: block;
+          margin-top: 5px;
+        }
+      }
+    }
+  }
+}
+
+// 診所環境區塊
+.facility-section {
+  padding: 80px 0;
+  background: var(--background-light);
+
+  .facility-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+
+    .facility-item {
+      background: var(--white);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .facility-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .facility-image-placeholder {
+        width: 100%;
+        height: 200px;
+        background: var(--background-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px dashed #ddd;
+
+        .placeholder-text {
+          font-size: 1.2rem;
+          color: var(--text-light);
+          text-align: center;
+        }
+      }
+
+      h3 {
+        padding: 20px 20px 10px;
+        color: var(--primary-color);
+        font-size: 1.3rem;
+      }
+
+      p {
+        padding: 0 20px 20px;
+        color: var(--text-light);
+        line-height: 1.6;
+      }
+    }
+  }
+}
+
+// 聯絡資訊區塊
+.contact-section {
+  padding: 80px 0;
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin-bottom: 50px;
+
+    .contact-info {
+      .info-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+
+        .info-icon {
+          font-size: 1.5rem;
+          margin-right: 15px;
+          width: 30px;
+        }
+
+        .info-text {
+          color: var(--text-light);
+          font-size: 1.1rem;
+        }
+      }
+    }
+
+    .contact-methods {
+      .method-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 20px;
+
+        .method-card {
+          text-align: center;
+          padding: 20px;
+          background: var(--background-light);
+          border-radius: var(--border-radius);
+          transition: var(--transition);
+          cursor: pointer;
+
+          &:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+          }
+
+          .method-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+          }
+
+          h4 {
+            margin-bottom: 8px;
+            color: var(--primary-color);
+          }
+
+          .method-content {
+            font-weight: 600;
+            margin-bottom: 5px;
+          }
+
+          .method-description {
+            font-size: 0.9rem;
+            opacity: 0.8;
+          }
+
+          &:hover {
+            h4,
+            .method-content,
+            .method-description {
+              color: var(--white);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .map-container {
+    text-align: center;
+
+    h3 {
+      margin-bottom: 20px;
+      color: var(--primary-color);
+    }
+
+    .map-placeholder {
+      background: var(--background-light);
+      padding: 40px;
+      border-radius: var(--border-radius);
+      border: 2px dashed #ddd;
+
+      p {
+        margin: 10px 0;
+        color: var(--text-light);
+      }
+    }
+  }
+}
+
+// 浮動聯絡按鈕
+.floating-contact {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+
+  .floating-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: var(--shadow-hover);
+    transition: var(--transition);
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &.phone {
+      background: var(--accent-color);
+      color: var(--white);
+    }
+
+    &.facebook {
+      background: #1877f2;
+      color: var(--white);
+    }
+  }
+}
+
+// 響應式設計
+@media (max-width: 768px) {
+  .hero-section {
+    .clinic-intro {
+      .clinic-name {
+        font-size: 2.2rem;
+      }
+
+      .doctor-intro {
+        flex-direction: column;
+        gap: 20px;
+
+        .doctor-info {
+          text-align: center;
+
+          .doctor-name {
+            font-size: 1.8rem;
+          }
+        }
+
+        .doctor-photo .doctor-image {
+          width: 120px;
+          height: 120px;
+        }
+      }
+    }
+
+    .quick-actions {
+      flex-direction: column;
+      align-items: center;
+
+      .action-btn {
+        width: 100%;
+        max-width: 280px;
+      }
+    }
+  }
+
+  .contact-section .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .schedule-section .schedule-table {
+    .schedule-header,
+    .schedule-row {
+      grid-template-columns: 1fr;
+
+      .day-column,
+      .time-column,
+      .day-cell,
+      .time-cell {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+    }
+  }
+
+  .floating-contact {
+    bottom: 20px;
+    right: 20px;
+
+    .floating-btn {
+      width: 50px;
+      height: 50px;
+      font-size: 1.3rem;
+    }
+  }
+}
+
+// Angular 流動動畫效果
+@keyframes floatingPattern {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(-20px) translateY(-10px);
+  }
+  50% {
+    transform: translateX(-40px) translateY(0);
+  }
+  75% {
+    transform: translateX(-20px) translateY(10px);
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes floatingParticles {
+  0% {
+    transform: translateX(0) translateY(0) rotate(0deg);
+    opacity: 0.6;
+  }
+  33% {
+    transform: translateX(30px) translateY(-20px) rotate(120deg);
+    opacity: 0.8;
+  }
+  66% {
+    transform: translateX(-20px) translateY(15px) rotate(240deg);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateX(0) translateY(0) rotate(360deg);
+    opacity: 0.6;
+  }
+}
+
+// 脈衝發光效果
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 
+      0 0 20px rgba(125, 180, 108, 0.4),
+      0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 
+      0 0 40px rgba(125, 180, 108, 0.8),
+      0 12px 40px rgba(0, 0, 0, 0.4);
+  }
+  100% {
+    box-shadow: 
+      0 0 20px rgba(125, 180, 108, 0.4),
+      0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+}
+
+// 動畫效果
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+// 滾動效果
+.section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

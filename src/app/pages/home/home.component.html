@@ -1,0 +1,253 @@
+<!-- Hero Section - 專業形象展示 -->
+<section class="hero-section" id="home" [@floatingElements]="animationState">
+  <div class="hero-container">
+    <div class="hero-content">
+      <div class="clinic-intro">
+        <div class="doctor-intro" [@fadeInUp]>
+          <div class="doctor-info">
+            <h2 class="doctor-name">{{ doctorInfo.name }} 醫師</h2>
+            <p class="doctor-title">{{ doctorInfo.title }}</p>
+            <p class="doctor-experience">{{ doctorInfo.experience }}</p>
+          </div>
+          <div class="doctor-photo" [@pulseGlow]="animationState">
+            <img src="assets/images/doctor-wang.jpg" alt="王公作醫師" class="doctor-image">
+          </div>
+        </div>
+        <p class="clinic-slogan" [@fadeInUp]>用心守護您的健康，提供專業貼心的醫療服務</p>
+      </div>
+      
+      <div class="quick-actions">
+        <button class="action-btn primary" (click)="callClinic()">
+          <span class="btn-icon">📞</span>
+          立即預約
+        </button>
+        <button class="action-btn secondary" (click)="scrollToSection('contact')">
+          <span class="btn-icon">📍</span>
+          聯絡我們
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 醫師專業認證 -->
+<section class="credentials-section" id="credentials">
+  <div class="container">
+    <h2 class="section-title">專業認證與資歷</h2>
+    <div class="credentials-grid">
+      <div class="credential-card">
+        <div class="credential-icon">🎓</div>
+        <h3>專業學歷</h3>
+        <ul>
+          <li>醫學系畢業</li>
+          <li>家庭醫學科專科訓練</li>
+          <li>持續醫學教育認證</li>
+        </ul>
+      </div>
+      
+      <div class="credential-card">
+        <div class="credential-icon">📜</div>
+        <h3>專科證書</h3>
+        <ul>
+          <li *ngFor="let cert of doctorInfo.certifications">{{ cert }}</li>
+        </ul>
+      </div>
+      
+      <div class="credential-card">
+        <div class="credential-icon">⭐</div>
+        <h3>專業領域</h3>
+        <ul>
+          <li *ngFor="let specialty of doctorInfo.specialties">{{ specialty }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 服務項目 -->
+<section class="services-section" id="services">
+  <div class="container">
+    <h2 class="section-title">專業醫療服務</h2>
+    <div class="services-grid">
+      <div class="service-card" *ngFor="let service of services">
+        <div class="service-icon">{{ service.icon }}</div>
+        <h3 class="service-title">{{ service.title }}</h3>
+        <p class="service-description">{{ service.description }}</p>
+        <ul class="service-features">
+          <li *ngFor="let feature of service.features">{{ feature }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 門診時間 -->
+<section class="schedule-section" id="schedule">
+  <div class="container">
+    <h2 class="section-title">門診時間表</h2>
+    <div class="clinic-hours">
+      <div class="hours-table-container">
+        <table class="hours-table">
+          <thead>
+            <tr>
+              <th>時段</th>
+              <th>週一</th>
+              <th>週二</th>
+              <th>週三</th>
+              <th>週四</th>
+              <th>週五</th>
+              <th>週六</th>
+              <th>週日</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="time-label">上午<br><span class="time-range">08:30-12:00</span></td>
+              <td class="time-slot available">●</td>
+              <td class="time-slot available">●</td>
+              <td class="time-slot available">●</td>
+              <td class="time-slot available">●</td>
+              <td class="time-slot available">●</td>
+              <td class="time-slot available">●</td>
+              <td class="time-slot unavailable">休息</td>
+            </tr>
+            <tr>
+              <td class="time-label">下午<br><span class="time-range">15:00-17:30</span></td>
+              <td class="time-slot available">●</td>
+              <td class="time-slot available">●</td>
+              <td class="time-slot available">●</td>
+              <td class="time-slot unavailable">休息</td>
+              <td class="time-slot available">●</td>
+              <td class="time-slot unavailable">休息</td>
+              <td class="time-slot unavailable">休息</td>
+            </tr>
+            <tr>
+              <td class="time-label">晚上<br><span class="time-range">18:30-21:00</span></td>
+              <td class="time-slot available">●</td>
+              <td class="time-slot available">●</td>
+              <td class="time-slot available">●</td>
+              <td class="time-slot available">●</td>
+              <td class="time-slot available">●</td>
+              <td class="time-slot unavailable">休息</td>
+              <td class="time-slot unavailable">休息</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div class="schedule-note">
+      <p>⚠️ 請提前電話預約，避免久候</p>
+      <p>🏥 急診請至大型醫院急診室</p>
+    </div>
+  </div>
+</section>
+
+<!-- 病患見證 -->
+<section class="testimonials-section" id="testimonials">
+  <div class="container">
+    <h2 class="section-title">病患見證</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card" *ngFor="let testimonial of testimonials">
+        <div class="testimonial-content">
+          <p>"{{ testimonial.content }}"</p>
+        </div>
+        <div class="testimonial-author">
+          <span class="author-name">{{ testimonial.author }}</span>
+          <span class="author-condition">{{ testimonial.condition }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 診所環境與設備 -->
+<section class="facility-section" id="facility">
+  <div class="container">
+    <h2 class="section-title">診所環境與設備</h2>
+    <div class="facility-grid">
+      <div class="facility-item">
+        <div class="facility-image-placeholder">
+          <span class="placeholder-text">🏥 接待區</span>
+        </div>
+        <h3>舒適接待區</h3>
+        <p>寬敞明亮的候診空間，提供舒適的就診環境</p>
+      </div>
+      
+      <div class="facility-item">
+        <div class="facility-image-placeholder">
+          <span class="placeholder-text">🩺 診療室</span>
+        </div>
+        <h3>專業診療室</h3>
+        <p>現代化醫療設備，確保診療品質與安全</p>
+      </div>
+      
+      <div class="facility-item">
+        <div class="facility-image-placeholder">
+          <span class="placeholder-text">💊 藥局</span>
+        </div>
+        <h3>專業藥局</h3>
+        <p>合格藥師駐點，提供用藥諮詢與服務</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 聯絡資訊 -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <h2 class="section-title">聯絡我們</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>診所資訊</h3>
+        <div class="info-item">
+          <span class="info-icon">🏥</span>
+          <span class="info-text">聖德診所</span>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">📍</span>
+          <span class="info-text">{{ clinicInfo.address }}</span>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">📞</span>
+          <span class="info-text">{{ clinicInfo.phone }}</span>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">✉️</span>
+          <span class="info-text">{{ clinicInfo.email }}</span>
+        </div>
+      </div>
+      
+      <div class="contact-methods">
+        <h3>預約方式</h3>
+        <div class="method-grid">
+          <div class="method-card" *ngFor="let method of contactMethods" (click)="handleContactMethod(method)">
+            <div class="method-icon">{{ method.icon }}</div>
+            <h4>{{ method.title }}</h4>
+            <p class="method-content">{{ method.content }}</p>
+            <p class="method-description">{{ method.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="map-container">
+      <h3>交通位置</h3>
+      <div class="map-placeholder">
+        <p>🗺️ Google Maps 地圖位置</p>
+        <p>🚗 附近有收費停車場</p>
+        <p>🚌 公車站步行3分鐘</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 浮動聯絡按鈕 -->
+<div class="floating-contact">
+  <button class="floating-btn phone" (click)="callClinic()" title="立即撥打">
+    📞
+  </button>
+  <button class="floating-btn facebook" (click)="openFacebook()" title="Facebook私訊">
+    📘
+  </button>
+</div>
