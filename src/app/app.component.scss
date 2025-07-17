@@ -229,6 +229,130 @@
         font-weight: 600;
       }
     }
+
+    .clinic-hours {
+      margin-top: 1rem;
+
+      .hours-table-container {
+        margin-top: 1rem;
+        overflow-x: auto;
+        border-radius: 12px;
+        box-shadow: 0 4px 16px rgba(47, 172, 165, 0.1);
+      }
+
+      .hours-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--bg-primary);
+        border-radius: 12px;
+        overflow: hidden;
+        font-size: 0.95rem;
+        border: 1px solid var(--primary-light);
+
+        thead {
+          th {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--text-on-primary);
+            padding: 1rem 0.8rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            line-height: 1.4;
+
+            &:first-child {
+              width: 20%;
+            }
+
+            &:not(:first-child) {
+              width: 11.43%; // 7 columns for days of week
+            }
+          }
+        }
+
+        tbody {
+          tr {
+            transition: all 0.3s ease;
+
+            &:nth-child(even) {
+              background: var(--neutral-100);
+            }
+
+            &:hover {
+              background: rgba(47, 172, 165, 0.08);
+              box-shadow: inset 0 0 0 1px var(--primary-light);
+            }
+          }
+
+          td {
+            padding: 1rem 0.8rem;
+            text-align: center;
+            border-bottom: 1px solid var(--neutral-300);
+            transition: all 0.3s ease;
+
+            &.day-label, &.time-label {
+              background: linear-gradient(135deg, var(--neutral-200), var(--neutral-100));
+              font-weight: 600;
+              color: var(--primary-dark);
+              text-align: center;
+              border-right: 2px solid var(--primary-light);
+              position: relative;
+              line-height: 1.4;
+
+              &::after {
+                content: '';
+                position: absolute;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                width: 2px;
+                background: linear-gradient(180deg, var(--primary), var(--primary-dark));
+              }
+
+              .time-range {
+                font-size: 0.75rem;
+                font-weight: 400;
+                opacity: 0.8;
+                font-family: 'Courier New', monospace;
+                margin-top: 0.3rem;
+                display: block;
+              }
+            }
+
+            &.time-slot {
+              font-size: 1.2rem;
+              padding: 1.2rem 0.8rem;
+              position: relative;
+
+              &.available {
+                color: var(--success);
+                background: linear-gradient(135deg, rgba(39, 174, 96, 0.12), rgba(39, 174, 96, 0.06));
+                border: 1px solid rgba(39, 174, 96, 0.2);
+                
+                &:hover {
+                  background: linear-gradient(135deg, rgba(39, 174, 96, 0.2), rgba(39, 174, 96, 0.1));
+                  transform: scale(1.05);
+                  box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+                }
+              }
+
+              &.unavailable {
+                color: var(--error);
+                background: linear-gradient(135deg, rgba(231, 76, 60, 0.12), rgba(231, 76, 60, 0.06));
+                border: 1px solid rgba(231, 76, 60, 0.2);
+                font-size: 0.9rem;
+                font-weight: 500;
+
+                &:hover {
+                  background: linear-gradient(135deg, rgba(231, 76, 60, 0.15), rgba(231, 76, 60, 0.08));
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 
@@ -315,6 +439,44 @@
     .contact-details {
       text-align: center;
     }
+
+    .clinic-hours {
+      .hours-table {
+        font-size: 0.85rem;
+
+        thead th {
+          padding: 0.8rem 0.5rem;
+          font-size: 0.9rem;
+
+          &:first-child {
+            width: 20%;
+          }
+
+          &:not(:first-child) {
+            width: 11.43%;
+          }
+        }
+
+        tbody td {
+          padding: 0.8rem 0.5rem;
+
+          &.time-label {
+            .time-range {
+              font-size: 0.65rem;
+            }
+          }
+
+          &.time-slot {
+            font-size: 1rem;
+            padding: 1rem 0.5rem;
+
+            &.unavailable {
+              font-size: 0.8rem;
+            }
+          }
+        }
+      }
+    }
   }
 }
 
@@ -332,6 +494,54 @@
     .nav-link {
       padding: 0.5rem;
       font-size: 0.85rem;
+    }
+  }
+
+  .contact-info {
+    .clinic-hours {
+      .hours-table-container {
+        margin: 0 -1rem;
+        border-radius: 0;
+      }
+
+      .hours-table {
+        border-radius: 0;
+        font-size: 0.75rem;
+
+        thead th {
+          padding: 0.6rem 0.3rem;
+          font-size: 0.8rem;
+
+          &:first-child {
+            width: 20%;
+          }
+
+          &:not(:first-child) {
+            width: 11.43%;
+          }
+        }
+
+        tbody td {
+          padding: 0.6rem 0.3rem;
+
+          &.time-label {
+            font-size: 0.8rem;
+
+            .time-range {
+              font-size: 0.6rem;
+            }
+          }
+
+          &.time-slot {
+            font-size: 0.9rem;
+            padding: 0.8rem 0.3rem;
+
+            &.unavailable {
+              font-size: 0.7rem;
+            }
+          }
+        }
+      }
     }
   }
 }
