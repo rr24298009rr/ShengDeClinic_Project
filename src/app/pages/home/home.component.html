@@ -39,7 +39,8 @@
         <div class="credential-icon">🎓</div>
         <h3>專業學歷</h3>
         <ul>
-          <li>醫學系畢業</li>
+          <li>台大三總主治醫師</li>
+          <li>國防醫學院 畢業</li>
           <li>家庭醫學科專科訓練</li>
           <li>持續醫學教育認證</li>
         </ul>
@@ -233,11 +234,11 @@
     
     <div class="map-container">
       <h3>交通位置</h3>
-      <div class="map-placeholder">
-        <p>🗺️ Google Maps 地圖位置</p>
-        <p>🚗 附近有收費停車場</p>
-        <p>🚌 公車站步行3分鐘</p>
-      </div>
+      <app-google-map 
+        [address]="clinicInfo.address"
+        [zoom]="16"
+        height="450px">
+      </app-google-map>
     </div>
   </div>
 </section>

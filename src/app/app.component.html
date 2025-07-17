@@ -1,16 +1,107 @@
-<header class="header">
+<header class="header" [@navItemsAnimation]>
   <div class="container">
-    <h1>{{ title }}</h1>
-    <nav class="nav">
+    <h1 [@titleAnimation]>{{ title }}</h1>
+    <nav class="nav" #navContainer>
+      <!-- 滑鼠跟隨光影效果 -->
+      <div class="mouse-follower" [class.active]="isMouseOverNav"></div>
+      
       <ul>
-        <li><a routerLink="/home" class="nav-link">首頁</a></li>
-        <li><a routerLink="/clinic-hours" class="nav-link">門診時間</a></li>
-        <li><a routerLink="/about" class="nav-link">診所介紹</a></li>
-        <li><a routerLink="/family-medicine" class="nav-link">家庭醫學科</a></li>
-        <li><a routerLink="/self-pay-services" class="nav-link">自費項目</a></li>
-        <li><a routerLink="/health-checkup" class="nav-link">健檢項目</a></li>
-        <li><a routerLink="/health-articles" class="nav-link">健康好文</a></li>
-        <li><a routerLink="/contact" class="nav-link">聯絡我們</a></li>
+        <li>
+          <a routerLink="/home" 
+             class="nav-link" 
+             routerLinkActive="active" 
+             [@navHover]="navItemStates['/home']"
+             (click)="handleNavClick($event, '/home')"
+             (mouseenter)="onNavItemHover('/home', true)"
+             (mouseleave)="onNavItemHover('/home', false)">
+            首頁
+            <!-- 波紋效果 -->
+            <span class="ripple" 
+                  *ngFor="let ripple of ripples" 
+                  [@ripple]
+                  [style.left.px]="ripple.x" 
+                  [style.top.px]="ripple.y"></span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/clinic-hours" 
+             class="nav-link" 
+             routerLinkActive="active" 
+             [@navHover]="navItemStates['/clinic-hours']"
+             (click)="handleNavClick($event, '/clinic-hours')"
+             (mouseenter)="onNavItemHover('/clinic-hours', true)"
+             (mouseleave)="onNavItemHover('/clinic-hours', false)">
+            門診時間
+          </a>
+        </li>
+        <li>
+          <a routerLink="/about" 
+             class="nav-link" 
+             routerLinkActive="active" 
+             [@navHover]="navItemStates['/about']"
+             (click)="handleNavClick($event, '/about')"
+             (mouseenter)="onNavItemHover('/about', true)"
+             (mouseleave)="onNavItemHover('/about', false)">
+            診所介紹
+          </a>
+        </li>
+        <li>
+          <a routerLink="/family-medicine" 
+             class="nav-link" 
+             routerLinkActive="active" 
+             [@navHover]="navItemStates['/family-medicine']"
+             (click)="handleNavClick($event, '/family-medicine')"
+             (mouseenter)="onNavItemHover('/family-medicine', true)"
+             (mouseleave)="onNavItemHover('/family-medicine', false)">
+            家庭醫學科
+          </a>
+        </li>
+        <li>
+          <a routerLink="/self-pay-services" 
+             class="nav-link" 
+             routerLinkActive="active" 
+             [@navHover]="navItemStates['/self-pay-services']"
+             (click)="handleNavClick($event, '/self-pay-services')"
+             (mouseenter)="onNavItemHover('/self-pay-services', true)"
+             (mouseleave)="onNavItemHover('/self-pay-services', false)">
+            自費項目
+          </a>
+        </li>
+        <li>
+          <a routerLink="/health-checkup" 
+             class="nav-link" 
+             routerLinkActive="active" 
+             [@navHover]="navItemStates['/health-checkup']"
+             (click)="handleNavClick($event, '/health-checkup')"
+             (mouseenter)="onNavItemHover('/health-checkup', true)"
+             (mouseleave)="onNavItemHover('/health-checkup', false)">
+            健檢項目
+          </a>
+        </li>
+        <li>
+          <a routerLink="/health-articles" 
+             class="nav-link" 
+             routerLinkActive="active" 
+             [@navHover]="navItemStates['/health-articles']"
+             (click)="handleNavClick($event, '/health-articles')"
+             (mouseenter)="onNavItemHover('/health-articles', true)"
+             (mouseleave)="onNavItemHover('/health-articles', false)">
+            健康好文
+          </a>
+        </li>
+        <li>
+          <a routerLink="/contact" 
+             class="nav-link contact-link" 
+             routerLinkActive="active" 
+             [@navHover]="navItemStates['/contact']"
+             (click)="handleNavClick($event, '/contact')"
+             (mouseenter)="onNavItemHover('/contact', true)"
+             (mouseleave)="onNavItemHover('/contact', false)"
+             title="跳轉到首頁聯絡區域">
+            聯絡我們
+            <span class="anchor-indicator">⚓</span>
+          </a>
+        </li>
       </ul>
     </nav>
   </div>

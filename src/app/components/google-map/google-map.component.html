@@ -1,0 +1,56 @@
+<div class="google-map-container">
+  <div class="map-header">
+    <div class="location-info">
+      <h4>📍 診所位置</h4>
+      <p class="address">{{ address }}</p>
+    </div>
+    <div class="map-actions">
+      <button class="map-btn primary" (click)="openInGoogleMaps()">
+        🗺️ Google Maps
+      </button>
+      <button class="map-btn secondary" (click)="getDirections()">
+        🧭 取得路線
+      </button>
+    </div>
+  </div>
+  
+  <div class="map-wrapper" [style.height]="height">
+    <iframe 
+      class="map-iframe"
+      [src]="mapUrl"
+      width="100%" 
+      [height]="height"
+      style="border:0;" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+  
+  <!-- 交通資訊 -->
+  <div class="transport-info">
+    <div class="transport-item">
+      <span class="transport-icon">🚗</span>
+      <div class="transport-details">
+        <strong>開車前往</strong>
+        <p>附近有收費停車場，建議事先查詢停車位</p>
+      </div>
+    </div>
+    
+    <div class="transport-item">
+      <span class="transport-icon">🚌</span>
+      <div class="transport-details">
+        <strong>大眾運輸</strong>
+        <p>公車站步行約3分鐘，多條路線可達</p>
+      </div>
+    </div>
+    
+    <div class="transport-item">
+      <span class="transport-icon">🚶‍♂️</span>
+      <div class="transport-details">
+        <strong>步行指引</strong>
+        <p>從基隆車站步行約15分鐘可達</p>
+      </div>
+    </div>
+  </div>
+</div>

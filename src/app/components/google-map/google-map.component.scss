@@ -1,0 +1,185 @@
+.google-map-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.map-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #7db46c, #9cc486);
+  color: white;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+}
+
+.location-info h4 {
+  margin: 0 0 5px 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.address {
+  margin: 0;
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+
+.map-actions {
+  display: flex;
+  gap: 10px;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
+}
+
+.map-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  &.primary {
+    background: white;
+    color: #7db46c;
+
+    &:hover {
+      background: #f0f9ed;
+    }
+  }
+
+  &.secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+  }
+}
+
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+.map-iframe {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  border: none;
+  border-radius: 0;
+}
+
+.transport-info {
+  padding: 20px;
+  background: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+}
+
+.transport-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 15px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.transport-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.transport-details {
+  flex: 1;
+
+  strong {
+    display: block;
+    color: #333;
+    font-size: 1rem;
+    margin-bottom: 4px;
+  }
+
+  p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .google-map-container {
+    border-radius: 8px;
+    margin-top: 15px;
+  }
+
+  .map-header {
+    padding: 15px;
+  }
+
+  .transport-info {
+    padding: 15px;
+  }
+
+  .transport-item {
+    gap: 12px;
+  }
+
+  .transport-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .map-wrapper {
+    min-height: 300px;
+  }
+
+  .map-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .map-btn {
+    justify-content: center;
+  }
+}

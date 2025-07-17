@@ -1,0 +1,846 @@
+/* App Component 專用樣式 - 增強版動畫效果 */
+
+.header {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: var(--text-on-primary);
+  padding: 1rem 0;
+  box-shadow: 0 4px 12px rgba(47, 172, 165, 0.15);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+
+  // 背景動態粒子效果
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.06) 0%, transparent 50%);
+    animation: backgroundFlow 20s linear infinite;
+    pointer-events: none;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    background: linear-gradient(45deg, #ffffff, #e0f7f7, #ffffff);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  .nav {
+    margin-top: 1rem;
+    position: relative;
+
+    // 滑鼠跟隨光影效果
+    .mouse-follower {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 40%, transparent 70%);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1;
+      filter: blur(20px);
+
+      &.active {
+        opacity: 1;
+        animation: pulse 2s ease-in-out infinite;
+      }
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .nav-link {
+      color: var(--text-on-primary);
+      text-decoration: none;
+      padding: 0.8rem 1.2rem;
+      border-radius: 12px;
+      font-weight: 500;
+      position: relative;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      display: block;
+      cursor: pointer;
+      user-select: none;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      
+      // 3D 效果
+      transform-style: preserve-3d;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      
+      // 發光邊框效果
+      box-shadow: 
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        0 2px 8px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+      // 背景漸層動畫
+      background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.1) 0%, 
+        rgba(255, 255, 255, 0.05) 50%, 
+        rgba(255, 255, 255, 0.1) 100%);
+      background-size: 200% 200%;
+
+      // 彩虹掃光效果
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, 
+          transparent, 
+          rgba(255, 255, 255, 0.4), 
+          rgba(255, 215, 0, 0.3),
+          rgba(255, 255, 255, 0.4), 
+          transparent);
+        transition: left 0.6s ease;
+        z-index: 1;
+      }
+
+      // 磨砂玻璃效果
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.1);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        border-radius: 12px;
+        z-index: -1;
+      }
+
+      // 文字內容
+      span:not(.ripple) {
+        position: relative;
+        z-index: 2;
+      }
+
+      &:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 
+          0 0 0 1px rgba(255, 255, 255, 0.3),
+          0 8px 25px rgba(0, 0, 0, 0.2),
+          0 0 20px rgba(255, 255, 255, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        
+        background-position: 100% 100%;
+        
+        &::before {
+          left: 100%;
+        }
+        
+        &::after {
+          opacity: 1;
+        }
+      }
+
+      &:active {
+        transform: translateY(-1px) scale(1.02);
+        transition: transform 0.1s ease;
+      }
+
+      &.active {
+        background: linear-gradient(135deg, 
+          rgba(255, 255, 255, 0.25) 0%, 
+          rgba(255, 255, 255, 0.15) 50%, 
+          rgba(255, 255, 255, 0.25) 100%);
+        font-weight: 600;
+        box-shadow: 
+          0 0 0 2px rgba(255, 255, 255, 0.4),
+          0 4px 15px rgba(0, 0, 0, 0.15),
+          0 0 30px rgba(255, 255, 255, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        
+        // 主動狀態的持續發光
+        animation: activeGlow 2s ease-in-out infinite;
+      }
+
+      // 確保點擊區域清晰
+      &:focus {
+        outline: none;
+        box-shadow: 
+          0 0 0 3px rgba(255, 255, 255, 0.5),
+          0 4px 15px rgba(0, 0, 0, 0.15),
+          0 0 30px rgba(255, 255, 255, 0.3);
+      }
+
+      // 波紋效果
+      .ripple {
+        position: absolute;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, transparent 70%);
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        width: 20px;
+        height: 20px;
+        z-index: 0;
+      }
+    }
+  }
+}
+
+// 動畫關鍵幀
+@keyframes backgroundFlow {
+  0%, 100% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(-20px) translateY(-10px);
+  }
+  50% {
+    transform: translateX(20px) translateY(-20px);
+  }
+  75% {
+    transform: translateX(-10px) translateY(10px);
+  }
+}
+
+@keyframes shimmer {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.6;
+  }
+}
+
+@keyframes activeGlow {
+  0%, 100% {
+    box-shadow: 
+      0 0 0 2px rgba(255, 255, 255, 0.4),
+      0 4px 15px rgba(0, 0, 0, 0.15),
+      0 0 30px rgba(255, 255, 255, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  }
+  50% {
+    box-shadow: 
+      0 0 0 2px rgba(255, 255, 255, 0.6),
+      0 4px 15px rgba(0, 0, 0, 0.15),
+      0 0 40px rgba(255, 255, 255, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+}
+
+.main-content {
+  min-height: calc(100vh - 140px);
+  padding: 2rem 0;
+}
+
+.welcome-section {
+  .hero-section {
+    text-align: center;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--neutral-100) 100%);
+    border: 1px solid var(--primary-lighter);
+    border-radius: 12px;
+    padding: 3rem 2rem;
+
+    h2 {
+      color: var(--primary-dark);
+      margin-bottom: 1rem;
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+    }
+
+    .hero-subtitle {
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+      margin-bottom: 3rem;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+  }
+}
+
+.clinic-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+
+  .info-card {
+    background: var(--bg-primary);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 2px solid var(--primary-lighter);
+    text-align: left;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(47, 172, 165, 0.1);
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(47, 172, 165, 0.2);
+      border-color: var(--primary);
+    }
+
+    h3 {
+      color: var(--primary-dark);
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    p {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+  }
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+
+  .service-card {
+    background: var(--bg-primary);
+    padding: 2rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--primary);
+    text-align: left;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(47, 172, 165, 0.08);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light), var(--secondary));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(47, 172, 165, 0.15);
+      border-left-color: var(--secondary);
+
+      &::before {
+        transform: scaleX(1);
+      }
+    }
+
+    h3 {
+      color: var(--primary-dark);
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    p {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+  }
+}
+
+.contact-info {
+  background: linear-gradient(135deg, var(--primary-lighter) 0%, var(--neutral-100) 100%);
+  padding: 2.5rem;
+  border-radius: 16px;
+  margin: 3rem 0;
+  text-align: center;
+  border: 1px solid var(--primary-light);
+
+  h3 {
+    color: var(--primary-dark);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .contact-details {
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+
+    p {
+      color: var(--text-primary);
+      line-height: 1.8;
+      margin-bottom: 0.8rem;
+      font-size: 1.1rem;
+
+      strong {
+        color: var(--primary-dark);
+        font-weight: 600;
+      }
+    }
+
+    .clinic-hours {
+      margin-top: 1rem;
+
+      .hours-table-container {
+        margin-top: 1rem;
+        overflow-x: auto;
+        border-radius: 12px;
+        box-shadow: 0 4px 16px rgba(47, 172, 165, 0.1);
+      }
+
+      .hours-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--bg-primary);
+        border-radius: 12px;
+        overflow: hidden;
+        font-size: 0.95rem;
+        border: 1px solid var(--primary-light);
+
+        thead {
+          th {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--text-on-primary);
+            padding: 1rem 0.8rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            line-height: 1.4;
+
+            &:first-child {
+              width: 20%;
+            }
+
+            &:not(:first-child) {
+              width: 11.43%; // 7 columns for days of week
+            }
+          }
+        }
+
+        tbody {
+          tr {
+            transition: all 0.3s ease;
+
+            &:nth-child(even) {
+              background: var(--neutral-100);
+            }
+
+            &:hover {
+              background: rgba(47, 172, 165, 0.08);
+              box-shadow: inset 0 0 0 1px var(--primary-light);
+            }
+          }
+
+          td {
+            padding: 1rem 0.8rem;
+            text-align: center;
+            border-bottom: 1px solid var(--neutral-300);
+            transition: all 0.3s ease;
+
+            &.day-label, &.time-label {
+              background: linear-gradient(135deg, var(--neutral-200), var(--neutral-100));
+              font-weight: 600;
+              color: var(--primary-dark);
+              text-align: center;
+              border-right: 2px solid var(--primary-light);
+              position: relative;
+              line-height: 1.4;
+
+              &::after {
+                content: '';
+                position: absolute;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                width: 2px;
+                background: linear-gradient(180deg, var(--primary), var(--primary-dark));
+              }
+
+              .time-range {
+                font-size: 0.75rem;
+                font-weight: 400;
+                opacity: 0.8;
+                font-family: 'Courier New', monospace;
+                margin-top: 0.3rem;
+                display: block;
+              }
+            }
+
+            &.time-slot {
+              font-size: 1.2rem;
+              padding: 1.2rem 0.8rem;
+              position: relative;
+
+              &.available {
+                color: var(--success);
+                background: linear-gradient(135deg, rgba(39, 174, 96, 0.12), rgba(39, 174, 96, 0.06));
+                border: 1px solid rgba(39, 174, 96, 0.2);
+                
+                &:hover {
+                  background: linear-gradient(135deg, rgba(39, 174, 96, 0.2), rgba(39, 174, 96, 0.1));
+                  transform: scale(1.05);
+                  box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+                }
+              }
+
+              &.unavailable {
+                color: var(--error);
+                background: linear-gradient(135deg, rgba(231, 76, 60, 0.12), rgba(231, 76, 60, 0.06));
+                border: 1px solid rgba(231, 76, 60, 0.2);
+                font-size: 0.9rem;
+                font-weight: 500;
+
+                &:hover {
+                  background: linear-gradient(135deg, rgba(231, 76, 60, 0.15), rgba(231, 76, 60, 0.08));
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  background: linear-gradient(135deg, var(--neutral-700), var(--neutral-800));
+  color: var(--text-on-primary);
+  text-align: center;
+  padding: 1.5rem 0;
+  margin-top: auto;
+  border-top: 3px solid var(--primary);
+
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+  }
+}
+
+/* 響應式設計 */
+@media (max-width: 1200px) {
+  .header {
+    .nav ul {
+      gap: 0.8rem;
+    }
+
+    .nav-link {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.85rem;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .header {
+    .nav ul {
+      gap: 0.6rem;
+    }
+
+    .nav-link {
+      padding: 0.4rem 0.7rem;
+      font-size: 0.8rem;
+    }
+  }
+}
+
+// 響應式設計 - 平板
+@media (max-width: 1024px) {
+  .header {
+    .nav ul {
+      gap: 0.8rem;
+    }
+
+    .nav-link {
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+    }
+    
+    .mouse-follower {
+      width: 100px;
+      height: 100px;
+    }
+  }
+}
+
+// 響應式設計 - 手機
+@media (max-width: 768px) {
+  .header {
+    padding: 0.8rem 0;
+    
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .nav {
+      margin-top: 0.8rem;
+      
+      .mouse-follower {
+        width: 80px;
+        height: 80px;
+        // 在手機上使用觸控優化
+        &.active {
+          animation: none;
+          opacity: 0.5;
+        }
+      }
+      
+      ul {
+        flex-direction: column;
+        gap: 0.6rem;
+        max-width: 100%;
+        padding: 0 1rem;
+      }
+
+      .nav-link {
+        padding: 1rem 1.5rem;
+        font-size: 0.9rem;
+        text-align: center;
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 15px;
+        
+        // 手機上的觸控優化
+        &:hover {
+          transform: translateY(-2px) scale(1.02);
+        }
+        
+        &:active {
+          transform: scale(0.98);
+          transition: transform 0.1s ease;
+        }
+        
+        // 增強點擊回饋
+        &::before {
+          transition: left 0.4s ease;
+        }
+        
+        // 手機上的發光效果更明顯
+        &.active {
+          box-shadow: 
+            0 0 0 3px rgba(255, 255, 255, 0.5),
+            0 6px 20px rgba(0, 0, 0, 0.2),
+            0 0 40px rgba(255, 255, 255, 0.3),
+            inset 0 2px 0 rgba(255, 255, 255, 0.5);
+        }
+      }
+    }
+  }
+}
+
+// 動畫性能優化
+@media (prefers-reduced-motion: reduce) {
+  .header {
+    &::before {
+      animation: none;
+    }
+    
+    .nav-link {
+      transition: none;
+      
+      &::before {
+        transition: none;
+      }
+      
+      &.active {
+        animation: none;
+      }
+    }
+    
+    h1 {
+      animation: none;
+      background: none;
+      -webkit-text-fill-color: var(--text-on-primary);
+    }
+  }
+}
+
+  .clinic-info {
+    grid-template-columns: 1fr;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome-section .hero-section {
+    padding: 2rem 1rem;
+    
+    h2 {
+      font-size: 2rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+    }
+  }
+
+  .contact-info {
+    padding: 2rem 1rem;
+
+    .contact-details {
+      text-align: center;
+    }
+
+    .clinic-hours {
+      .hours-table {
+        font-size: 0.85rem;
+
+        thead th {
+          padding: 0.8rem 0.5rem;
+          font-size: 0.9rem;
+
+          &:first-child {
+            width: 20%;
+          }
+
+          &:not(:first-child) {
+            width: 11.43%;
+          }
+        }
+
+        tbody td {
+          padding: 0.8rem 0.5rem;
+
+          &.time-label {
+            .time-range {
+              font-size: 0.65rem;
+            }
+          }
+
+          &.time-slot {
+            font-size: 1rem;
+            padding: 1rem 0.5rem;
+
+            &.unavailable {
+              font-size: 0.8rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    h1 {
+      font-size: 1.3rem;
+    }
+
+    .nav ul {
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .nav-link {
+      padding: 0.8rem 1rem;
+      font-size: 0.85rem;
+      border-radius: 12px;
+    }
+  }
+
+  .contact-info {
+    .clinic-hours {
+      .hours-table-container {
+        margin: 0 -1rem;
+        border-radius: 0;
+      }
+
+      .hours-table {
+        border-radius: 0;
+        font-size: 0.75rem;
+
+        thead th {
+          padding: 0.6rem 0.3rem;
+          font-size: 0.8rem;
+
+          &:first-child {
+            width: 20%;
+          }
+
+          &:not(:first-child) {
+            width: 11.43%;
+          }
+        }
+
+        tbody td {
+          padding: 0.6rem 0.3rem;
+
+          &.time-label {
+            font-size: 0.8rem;
+
+            .time-range {
+              font-size: 0.6rem;
+            }
+          }
+
+          &.time-slot {
+            font-size: 0.9rem;
+            padding: 0.8rem 0.3rem;
+
+            &.unavailable {
+              font-size: 0.7rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
